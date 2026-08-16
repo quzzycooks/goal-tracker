@@ -43,4 +43,13 @@ describe("GoalTracker", () => {
     expect(progress.total).toBe(2);
     expect(progress.completed).toBe(1);
   });
+  test("returns only incomplete goals", () => {
+    const g1 = tracker.addGoal("Goal 1");
+    tracker.addGoal("Goal 2");
+    tracker.completeGoal(g1.id);
+
+    const incomplete = tracker.getIncompleteGoals();
+    expect(incomplete).toHaveLength(1);
+    expect(incomplete[0].title).toBe("Goal 2");
+  });
 });

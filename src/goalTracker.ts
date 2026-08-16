@@ -43,4 +43,7 @@ export class GoalTracker {
     const completed = this.goals.filter((g) => g.completed).length;
     return { total, completed };
   }
+  getIncompleteGoals(): Goal[] {
+    return this.goals.filter((g) => !g.completed);
+  }
 }
